@@ -19,17 +19,50 @@ android {
     }
 
     buildTypes {
-        release {
+        debug {
             minifyEnabled false
+            shrinkResources false
+            debuggable true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        release {
+            minifyEnabled true
+            shrinkResources true
+            debuggable false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+
+    flavorDimensions "appInstance"
+    productFlavors {
+        stage {
+            dimension "appInstance"
+        }
+        uat {
+            dimension "appInstance"
+
+        }
+        prod {
+            dimension "appInstance"
+
+        }
+    }
+
+    applicationVariants.all { variant ->
+        variant.outputs.all {
+            def variantName = variant.name
+            def versionName = variant.versionName
+            def versionCode = variant.versionCode
+            outputFileName = "JenkinsDemo_${variantName}_v${versionName}(${versionCode}).apk"
+        }
     }
 
     buildFeatures{
