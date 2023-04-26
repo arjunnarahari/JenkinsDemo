@@ -17,7 +17,7 @@ class HomeActivity : AppCompatActivity() {
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
         if(intent.hasExtra(Constants.SOURCE) && intent.getStringExtra(Constants.SOURCE)!=null){
-            binding.textFromActivity.text = intent.getStringExtra(Constants.SOURCE)
+            binding.textFromActivity.text = ""+intent.getStringExtra(Constants.SOURCE)
         }
     }
 }
