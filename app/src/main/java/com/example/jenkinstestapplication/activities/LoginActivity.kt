@@ -25,7 +25,7 @@ class LoginActivity : AppCompatActivity() {
             startActivity(
                 Intent(context, HomeActivity::class.java)
                     .apply {
-                        putExtra(Constants.SOURCE, "from activity Login "+Constants.LOGIN_ACTIIVITY)
+                        putExtra(Constants.SOURCE, "from activity one "+Constants.LOGIN_ACTIIVITY)
                     })
         }
     }
